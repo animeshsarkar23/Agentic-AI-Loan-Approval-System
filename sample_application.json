@@ -1,0 +1,40 @@
+{
+  "applicant_info": {
+    "first_name": "Emily",
+    "last_name": "Chen",
+    "email": "emily.chen@email.com",
+    "phone": "555-0010",
+    "date_of_birth": "1988-03-20",
+    "ssn_last_4": "7890",
+    "annual_income": 120000,
+    "employment_status": "Employed",
+    "years_employed": 6.0,
+    "current_employer": "Goldman Analytics"
+  },
+  "loan_details": {
+    "loan_amount": 350000,
+    "loan_purpose": "Home",
+    "loan_term_months": 360,
+    "interest_rate_requested": 6.75
+  },
+  "credit_profile": {
+    "credit_score": 720,
+    "accounts_open": 4,
+    "delinquencies_past_30_days": 0,
+    "delinquencies_past_90_days": 0,
+    "total_debt": 35000,
+    "inquiries_last_6_months": 2,
+    "bankruptcy_history": null
+  },
+  "document_verification": {
+    "income_verification_status": "Verified",
+    "income_verification_confidence": 0.92,
+    "employment_verification_status": "Verified",
+    "employment_verification_confidence": 0.88,
+    "documents_provided": [
+      "W2",
+      "Pay stubs (6 months)",
+      "Tax returns (2 years)"
+    ]
+  }
+}

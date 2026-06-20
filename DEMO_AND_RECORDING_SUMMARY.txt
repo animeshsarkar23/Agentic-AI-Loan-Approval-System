@@ -1,0 +1,307 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║          🏦 AGENTIC AI LOAN APPROVAL SYSTEM - DEMO & RECORDING GUIDE 🏦    ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+COMPLETE SETUP SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ System Status:
+   • Python 3.12 installed
+   • Virtual environment created (venv/)
+   • All dependencies installed
+   • API key configured (sk-HpW67a7EpgYgZT6lRElnXQ)
+   • FastAPI server running (http://localhost:8000)
+   • Streamlit UI running (http://localhost:8501)
+   • 5 AI agents ready
+   • Recording tools installed
+
+✅ Application URLs:
+   • Web UI:    http://localhost:8501
+   • API:       http://localhost:8000
+   • API Docs:  http://localhost:8000/docs
+
+✅ Recording Scripts Created:
+   • auto_record_ffmpeg.sh    (Automatic - RECOMMENDED)
+   • record_demo.sh           (Interactive menu)
+   • RECORDING_GUIDE.md       (Complete documentation)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK START (3 STEPS)
+═══════════════════════════════════════════════════════════════════════════════
+
+STEP 1: Navigate to project
+  $ cd /home/ubuntu/Capstone
+
+STEP 2: Start recording
+  $ ./auto_record_ffmpeg.sh
+
+STEP 3: Follow instructions
+  • Press ENTER to start
+  • Demo at http://localhost:8501
+  • Press 'q' to stop
+  • Video saved to: recordings/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DEMO SCRIPT (8-10 minutes)
+═══════════════════════════════════════════════════════════════════════════════
+
+Narration:
+"Welcome to the Agentic AI Intelligent Loan Approval System. This is a 
+production-ready application that uses 5 specialized AI agents to analyze 
+loan applications in real-time."
+
+Timeline:
+
+[0:00-0:30] Introduction
+  - Show sidebar with 4 navigation options
+  - Explain: Submit Application, View Results, History, Status
+
+[0:30-2:00] Fill Application Form
+  - Show form with default values (John Doe, $150k, credit 750)
+  - Modify credit score: Change to 680
+  - Modify income: Change to $85,000
+  - Loan amount: Keep at $300,000
+  - Click "🚀 Submit Application & Analyze"
+
+[2:00-3:00] Explain Processing
+  - Show loading indicator
+  - Say: "The system is now running 5 AI agents in parallel"
+  - List agents: Document Verification, Credit Analysis, Risk Assessment, 
+    Compliance, Decision
+  - Wait for results (15-30 seconds)
+
+[3:00-5:00] Review Results
+  - Show decision: "MANUAL_REVIEW" (because of modified data)
+  - Show decision score: ~60
+  - Show reasoning from AI
+  - Expand "Document Verification Agent" - click arrow
+  - Expand "Credit Analysis Agent"
+  - Show "Risk Flags" section
+  - Explain what each section means
+
+[5:00-6:30] View History
+  - Click "📈 Application History" in sidebar
+  - Show: Total Applications, Approved, Rejected, Manual Review counts
+  - Show decision breakdown chart
+  - Explain the applications table
+
+[6:30-7:00] Show System Status
+  - Click "🔧 System Status" in sidebar
+  - Show: System status (🟢 Operational)
+  - Show: Active agents list
+  - Show: Decision thresholds configuration
+
+[7:00-8:00] Show API Documentation
+  - Open new tab: http://localhost:8000/docs
+  - Highlight the 5 endpoints:
+    * POST /loans/analyze - Submit application
+    * GET /loans/{id} - Get decision
+    * GET /loans/{id}/details - Get detailed analysis
+    * GET /loans - List all applications
+    * GET /health - Health check
+  - Show how to try endpoints interactively
+  - Try one endpoint (e.g., GET /health)
+
+[8:00-9:00] Additional Testing (Optional)
+  - Go back to browser tab 1
+  - Submit another application with different parameters:
+    * Credit Score: 750 (good)
+    * Annual Income: $150,000
+    * Keep everything else same
+  - Show that it gets APPROVED
+  - Demonstrate how decisions vary based on input
+
+[9:00-10:00] Summary
+  - Recap the 5 agents and their roles
+  - Explain the benefits: Speed, Consistency, Explainability
+  - Mention: "Ready for production use"
+  - Talk about use cases: Banks, Credit Unions, FinTech
+
+═══════════════════════════════════════════════════════════════════════════════
+
+RECORDING PARAMETERS
+═══════════════════════════════════════════════════════════════════════════════
+
+Default (Recommended):
+  Resolution: 1920x1080
+  Frame Rate: 30 FPS
+  Quality: Medium (CRF 23)
+  Codec: H.264
+  File Size: ~100-150 MB for 10 minutes
+
+Estimated Duration: 8-10 minutes total
+Output File: loan_approval_demo_YYYYMMDD_HHMMSS.mp4
+Location: /home/ubuntu/Capstone/recordings/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+MANUAL RECORDING (If Script Doesn't Work)
+═══════════════════════════════════════════════════════════════════════════════
+
+Option A - Simple FFmpeg Command:
+  ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0 -c:v libx264 -crf 23 \
+    -preset veryfast demo.mp4
+  [Then press 'q' to stop]
+
+Option B - With Audio:
+  ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0 -f pulse -ac 2 -i default \
+    -c:v libx264 -c:a aac demo_audio.mp4
+
+Option C - SimpleScreenRecorder GUI:
+  simplescreenrecorder
+  [Configure and click Start Recording]
+
+Option D - GNOME Recorder:
+  Ctrl+Alt+Shift+R (Start)
+  Ctrl+Alt+Shift+R (Stop)
+  [Video saved to ~/Videos/]
+
+═══════════════════════════════════════════════════════════════════════════════
+
+POST-RECORDING TASKS
+═══════════════════════════════════════════════════════════════════════════════
+
+View Recording:
+  ffplay /home/ubuntu/Capstone/recordings/loan_approval_demo_*.mp4
+
+List All Recordings:
+  ls -lh /home/ubuntu/Capstone/recordings/
+
+Compress for Email/Slack:
+  ffmpeg -i demo.mp4 -c:v libx264 -crf 28 demo_compressed.mp4
+
+Convert to WebM:
+  ffmpeg -i demo.mp4 -c:v libvpx -c:a libvorbis demo.webm
+
+Get Video Info:
+  ffmpeg -i demo.mp4
+
+Trim Recording:
+  ffmpeg -i demo.mp4 -ss 00:00:10 -to 00:01:00 -c copy demo_trimmed.mp4
+
+═══════════════════════════════════════════════════════════════════════════════
+
+SHARING THE RECORDING
+═══════════════════════════════════════════════════════════════════════════════
+
+Email/Slack (Recommended):
+  1. Compress: ffmpeg -i demo.mp4 -crf 28 demo_small.mp4
+  2. Send file or cloud link
+
+YouTube:
+  1. Upload demo.mp4 directly
+  2. Set privacy (public/unlisted/private)
+
+Cloud Drive (Google Drive, Dropbox):
+  1. Upload demo.mp4
+  2. Share link with recipients
+
+Internal Documentation:
+  1. Save to shared network drive
+  2. Reference in wiki/docs
+  3. Use timestamp in filename
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════════
+
+Issue: Recording script doesn't start
+  Solution: Check if FFmpeg is installed
+    sudo apt-get install -y ffmpeg
+
+Issue: Application not responding
+  Solution: Check servers are running
+    curl http://localhost:8000/health
+    curl http://localhost:8501
+
+Issue: Recording uses too much CPU
+  Solution: Use faster preset
+    ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0 \
+      -c:v libx264 -preset ultrafast demo.mp4
+
+Issue: File too large
+  Solution: Increase compression
+    ffmpeg -i demo.mp4 -c:v libx264 -crf 30 demo_small.mp4
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DOCUMENTATION REFERENCES
+═══════════════════════════════════════════════════════════════════════════════
+
+Complete Recording Guide:
+  /home/ubuntu/Capstone/RECORDING_GUIDE.md
+
+Application README:
+  /home/ubuntu/Capstone/README.md
+
+Architecture Documentation:
+  /home/ubuntu/Capstone/ARCHITECTURE.md
+
+Getting Started:
+  /home/ubuntu/Capstone/GETTING_STARTED.md
+
+Testing Guide:
+  /home/ubuntu/Capstone/TESTING.md
+
+Project Summary:
+  /home/ubuntu/Capstone/PROJECT_SUMMARY.md
+
+═══════════════════════════════════════════════════════════════════════════════
+
+QUICK REFERENCE COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+# Navigate to project
+cd /home/ubuntu/Capstone
+
+# Start automatic recording script
+./auto_record_ffmpeg.sh
+
+# Start manual recording
+ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0 -c:v libx264 -crf 23 -preset veryfast demo.mp4
+
+# Play recording
+ffplay recordings/loan_approval_demo_*.mp4
+
+# List recordings
+ls -lh recordings/
+
+# Compress recording
+ffmpeg -i demo.mp4 -c:v libx264 -crf 28 demo_small.mp4
+
+# Stop FastAPI server
+kill $(cat /tmp/fastapi.pid)
+
+# Stop Streamlit
+kill $(cat /tmp/streamlit.pid)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+NEXT STEPS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ✅ Setup Complete - Everything is running
+2. 📹 Ready to Record - Run: ./auto_record_ffmpeg.sh
+3. 🌐 Demo Application - Open: http://localhost:8501
+4. ▶️  Record Demo - Follow 8-10 minute script above
+5. 💾 Save Recording - Videos auto-saved to: recordings/
+6. 📤 Share Recording - Compress and share as needed
+
+═══════════════════════════════════════════════════════════════════════════════
+
+SYSTEM RUNNING
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ FastAPI:     http://localhost:8000
+✅ Streamlit:   http://localhost:8501
+✅ Agents:      Ready for analysis
+✅ Recording:   Ready to start
+
+Ready to record? Run: ./auto_record_ffmpeg.sh
+
+═══════════════════════════════════════════════════════════════════════════════

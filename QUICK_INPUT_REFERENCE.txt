@@ -1,0 +1,291 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║         🌐 QUICK INPUT GUIDE - Using the Loan Approval System UI 🌐        ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 5-SECOND SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Open:     http://localhost:8501
+2. Click:    "📋 Submit Application"
+3. Modify:   Credit score, income, etc. (or use defaults)
+4. Submit:   Click "🚀 Submit Application & Analyze"
+5. Wait:     15-30 seconds for analysis
+6. Review:   See decision and agent reasoning
+
+
+📋 FORM FIELDS QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+APPLICANT INFO:
+  First Name:           Text (max 50 chars)
+  Last Name:            Text (max 50 chars)
+  Email:                Email format
+  Phone:                Text (e.g., 555-0001)
+  Date of Birth:        Calendar picker
+  SSN (Last 4):         Numbers only (exactly 4 digits)
+  Annual Income:        Numbers in dollars
+  Employment Status:    Dropdown (Employed, Self-employed, Retired, Unemployed)
+  Years Employed:       Decimal number (0-50)
+  Current Employer:     Text
+
+LOAN DETAILS:
+  Loan Amount:          Numbers in dollars
+  Loan Purpose:         Dropdown (Home, Auto, Personal, Business)
+  Loan Term:            Slider (12-360 months)
+  Interest Rate:        Decimal percentage (optional)
+
+CREDIT PROFILE:
+  Credit Score:         Numbers (300-850)
+  Accounts Open:        Numbers (0+)
+  Delinquencies (30d):  Numbers (0+)
+  Delinquencies (90d):  Numbers (0+)
+  Total Debt:           Numbers in dollars
+  Recent Inquiries:     Numbers (0+)
+  Bankruptcy History:   Dropdown (None, Chapter 7, Chapter 13, etc.)
+
+DOCUMENT VERIFICATION:
+  Income Verification:  Dropdown (Verified, Pending, Failed)
+  Income Confidence:    Slider (0-100%)
+  Employment Verif.:    Dropdown (Verified, Pending, Failed)
+  Employment Conf.:     Slider (0-100%)
+  Documents Provided:   Multi-select checkboxes
+
+
+💡 DEFAULT TEST VALUES
+═══════════════════════════════════════════════════════════════════════════════
+
+Just click Submit to try these defaults:
+
+  Name:                 John Doe
+  Email:                john@example.com
+  Annual Income:        $150,000
+  Employment:           Employed (8.5 years)
+  Employer:             Tech Corporation Inc.
+  
+  Credit Score:         750
+  Total Debt:           $45,000
+  Delinquencies:        None
+  
+  Loan Amount:          $300,000
+  Purpose:              Home
+  Term:                 360 months (30 years)
+  
+  Income Verification:  95% confidence (Verified)
+  Employment Verif.:    90% confidence (Verified)
+
+
+🎯 PRESET SCENARIOS
+═══════════════════════════════════════════════════════════════════════════════
+
+SCENARIO A - SHOULD BE APPROVED ✅
+  Credit Score:     750+ (Change from 750)
+  Income:           $150,000+ (Use default)
+  Debt:             $45,000 or less (Use default)
+  Delinquencies:    0 (Use default)
+  Expected Score:   85-95 → APPROVED
+
+SCENARIO B - SHOULD BE REJECTED ❌
+  Credit Score:     550 (Change from 750)
+  Income:           $55,000 (Change from 150000)
+  Debt:             $95,000 (Change from 45000)
+  Delinquencies:    2-3 (Change from 0)
+  Bankruptcy:       Yes (Change from None)
+  Expected Score:   25-35 → REJECTED
+
+SCENARIO C - SHOULD BE MANUAL_REVIEW ⏳
+  Credit Score:     680 (Change from 750)
+  Income:           $85,000 (Change from 150000)
+  Debt:             $38,000 (Change from 45000)
+  Delinquencies:    1 (Change from 0)
+  Inquiries:        3 (Change from 1)
+  Expected Score:   45-65 → MANUAL_REVIEW
+
+SCENARIO D - EXCELLENT APPLICANT ✅✅
+  Credit Score:     800+ (Change from 750)
+  Income:           $200,000+ (Change from 150000)
+  Debt:             $30,000 or less (Change from 45000)
+  Years Employed:   10+ (Change from 8.5)
+  Expected Score:   90-100 → APPROVED
+
+
+📊 WHAT YOU'LL SEE AFTER SUBMISSION
+═══════════════════════════════════════════════════════════════════════════════
+
+RESULT DISPLAY:
+  ✅ APPROVED         (Green - Low risk, all checks pass)
+  ❌ REJECTED         (Red - High risk, critical issues)
+  ⏳ MANUAL_REVIEW   (Orange - Borderline, needs human review)
+
+DECISION CARD:
+  • Final Decision (color-coded)
+  • Score: 0-100 (Higher = stronger approval)
+  • Processing Time: Seconds taken
+  • Application ID: Unique identifier
+
+REASONING:
+  • 1-2 paragraph explanation from AI
+
+AGENT ANALYSES (Can expand each):
+  • Document Verification: Score + detailed analysis
+  • Credit Analysis: Score + detailed analysis
+  • Risk Assessment: Score + detailed analysis
+  • Compliance Check: Score + detailed analysis
+  • Decision Agent: Final synthesis
+
+RISK FLAGS:
+  • List of identified risk factors
+
+COMPLIANCE ISSUES:
+  • List of regulatory concerns (if any)
+
+
+🔄 NAVIGATION
+═══════════════════════════════════════════════════════════════════════════════
+
+Left Sidebar Menu:
+  📋 Submit Application  → Form to enter/modify data
+  📊 View Results        → See latest analysis
+  📈 Application History → See all submissions
+  🔧 System Status       → Check configuration
+
+
+🔑 KEY FIELDS THAT IMPACT DECISIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+MOST IMPORTANT (Strongly impacts decision):
+  1. Credit Score         ← Primary factor
+  2. Annual Income        ← Affects debt-to-income ratio
+  3. Total Debt           ← Combined with income = DTI
+  4. Delinquencies        ← Recent problems = red flag
+  5. Loan Amount          ← Must be reasonable for income
+
+MODERATE IMPORTANCE:
+  6. Years Employed       ← Stability indicator
+  7. Verification Status  ← Document authenticity
+  8. Recent Inquiries     ← Sign of financial stress
+  9. Loan Purpose         ← Type matters
+  10. Bankruptcy History  ← Historical problems
+
+LESS IMPACT (Still checked):
+  11. Number of accounts  ← Diversity indicator
+  12. Employment status   ← Type of work
+
+
+⚡ EXPECTED PROCESSING TIMES
+═══════════════════════════════════════════════════════════════════════════════
+
+Step 1: Submit Application     < 1 second
+Step 2: 5 Agents Analyze       15-30 seconds (Claude API calls)
+Step 3: Display Results        < 2 seconds
+Total Wait Time:               15-32 seconds
+
+
+✅ SUCCESS CHECKLIST
+═══════════════════════════════════════════════════════════════════════════════
+
+Before Submitting:
+  ☐ Filled all required fields (marked with *)
+  ☐ Checked values make sense
+  ☐ Application ID will be auto-generated
+
+After Submission:
+  ☐ Loading spinner appears
+  ☐ See "Analyzing application..."
+  ☐ After 20-30s, decision appears
+  ☐ Can expand each agent's analysis
+  ☐ Can see risk flags and compliance issues
+
+After Decision:
+  ☐ Application appears in "View Results"
+  ☐ Application saved in "Application History"
+  ☐ Can submit another application
+  ☐ Can compare multiple decisions
+
+
+🐛 COMMON ISSUES & FIXES
+═══════════════════════════════════════════════════════════════════════════════
+
+"Page not loading"
+  → Refresh browser (F5)
+  → Check: http://localhost:8501 is correct
+
+"Form fields disabled/grayed out"
+  → Page loading
+  → Wait a moment and try again
+
+"Submit button doesn't work"
+  → Fill all required fields (marked *)
+  → Try again
+
+"Application takes too long"
+  → Normal! Takes 15-30 seconds
+  → Claude API processing all 5 agents
+
+"Don't see results after waiting"
+  → Refresh page (F5)
+  → Try submitting again
+
+"Can't modify values"
+  → Make sure you're on "Submit Application" page
+  → Try scrolling to field
+
+"Results show error"
+  → Check internet connection
+  → Check API key is valid
+  → Check servers are running
+
+
+📱 ON DIFFERENT DEVICES
+═══════════════════════════════════════════════════════════════════════════════
+
+Desktop:     ✅ Best experience, all features work
+Laptop:      ✅ Full functionality
+Tablet:      ⚠️  Works but might need scrolling
+Phone:       ⚠️  Works but cramped, not recommended
+
+
+🎓 TIP: HOW DECISIONS ARE MADE
+═══════════════════════════════════════════════════════════════════════════════
+
+Score Calculation:
+  1. Each agent scores 0-100
+  2. Scores are averaged
+  3. Final score determines decision:
+     • Score ≥ 75  → APPROVED ✅
+     • Score < 40  → REJECTED ❌
+     • 40 ≤ Score < 75 → MANUAL_REVIEW ⏳
+
+
+📚 FOR MORE INFO
+═══════════════════════════════════════════════════════════════════════════════
+
+Detailed Guide:
+  cat /home/ubuntu/Capstone/WEB_UI_INPUT_GUIDE.md
+
+Demo Walkthrough:
+  cat /home/ubuntu/Capstone/DEMO_AND_RECORDING_SUMMARY.txt
+
+App Documentation:
+  cat /home/ubuntu/Capstone/README.md
+
+System Architecture:
+  cat /home/ubuntu/Capstone/ARCHITECTURE.md
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 READY TO START?
+
+Open browser: http://localhost:8501
+
+Then:
+  1. Click "📋 Submit Application" in sidebar
+  2. Modify any fields you want
+  3. Click "🚀 Submit Application & Analyze"
+  4. Wait 20-30 seconds
+  5. See results!
+
+═══════════════════════════════════════════════════════════════════════════════
